@@ -1,5 +1,4 @@
 #include <stdio.h>
-
 #include "strings.h"
 
 void convert(char * to, char * from);
@@ -31,6 +30,7 @@ int main (int argc, char **argv)
 				stok(NULL,delim,lec);
 				char tmp[1024] = "";
 				convert(tmp,lec);
+				printf("%s\n",tmp);
 				for(int i = 0; i<slen(tmp); i++)
 				{
 					output[outL] = tmp[i];
@@ -39,6 +39,7 @@ int main (int argc, char **argv)
 				output[outL] = delim[0];
 				outL++;
 			}while(lec[0] != '\0');
+			output[outL]='\0';
 			printf("new path: %s",output);
 		}	
 	}	
@@ -57,34 +58,14 @@ void convert(char * to, char * from)
 	if(from[0]=='\\' && from[1]=='\\')
 	{
 		char tmp[260] = "";
-		scpy(tmp,"http:"); 
-		int l = 5;
-		char lec[260];
-		from[0]='/'; from[1]='/';
-		stok(from,"\\",lec);
-		do{			
-			if( sspn(lec,"1234567890") > 0 && sspn(lec,".") > 0) //���� IP �����
-			{		printf("IP");
-				for(int i = 0; i < 15; i++){
-					tmp[l]=lec[i];
-					l++;
-				}
-				tmp[l] = '/';
-				l++;
-			}
-			else { //���� �������� ���
-				for(int i=0; lec[i] != '\0'; i++)
-				{
-					tmp[l]=lec[i];
-					l++;		
-				}
-				tmp[l] = '/';
-				l++;
-			}
-			stok(NULL,"\\",lec);
-		}while(lec[0] != '\0');
+		scpy(tmp,"http://"); 
+		int l = 7;
+		for(int i = 2; i < slen(from); i++)
+		{
+			tmp[l]=from[i];
+			if(tmp[l]=='\\') tmp[l] = '/';
+			l++;
+		}
 		scpy(to,tmp);
 	}
-	
-	//scpy(to,from);
 }
