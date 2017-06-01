@@ -7,7 +7,7 @@ int slen(const char *str)
     for(int i= 0; str[i] != '\0'; i++){
 		lenght++;
 	}
-    return lenght;   
+    return lenght;  
 }
 
 //Функция разбиения строки на элементы-токены (stok), разделенные заданным символом
@@ -15,7 +15,7 @@ void stok(char *str, const char *delim, char *lecsemma)
 {		
 	if(str != NULL)
 	{
-		scpy(tempTok,str);
+		scpy(tempTok,str);  //куда, откуда
 		pos = 0;
 	}else pos++;	
 	int tmp_i=0;

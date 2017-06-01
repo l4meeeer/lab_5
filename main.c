@@ -1,4 +1,5 @@
 #include <stdio.h>
+
 #include "strings.h"
 
 void convert(char * to, char * from);
@@ -42,7 +43,7 @@ int main (int argc, char **argv)
 			output[outL]='\0';
 			printf("new path: %s",output);
 		}	
-	}	
+	}
 	return 0;
 }
 
